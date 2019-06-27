@@ -24,7 +24,7 @@ app.get('', (req, res) => {
     res.render('index', {
         namePage: 'Home',
         title: 'Weather App',
-        auther: 'Dev. by Muhammad'
+        auther: 'Dev. by Muhammad Elabadsa'
     });
 });
 
