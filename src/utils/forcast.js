@@ -14,7 +14,8 @@ const forcast = (latitude, longitude, callback) => {
                     temperature: body.currently["temperature"],
                     precipProbability: body.currently["precipProbability"],
                     maxTemp: body.daily.data[0].temperatureHigh,
-                    minTemp: body.daily.data[0].temperatureLow
+                    minTemp: body.daily.data[0].temperatureLow,
+                    time: body.daily.data[0].time,
                 });
         }
     });
