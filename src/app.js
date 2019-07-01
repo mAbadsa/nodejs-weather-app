@@ -72,6 +72,8 @@ app.get('/weather', (req, res) => {
                         summary: forcastData.summary,
                         temperature: forcastData.temperature,
                         precipProbability: forcastData.precipProbability,
+                        maxTemp: forcastData.maxTemp,
+                        minTemp: forcastData.minTemp,
                         location: location,
                     });
                 } 
