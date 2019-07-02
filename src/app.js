@@ -75,7 +75,9 @@ app.get('/weather', (req, res) => {
                         maxTemp: forcastData.maxTemp,
                         minTemp: forcastData.minTemp,
                         location: location,
-                        time: forcastData.time
+                        timeNow: forcastData.timeNow,
+                        time2: forcastData.time2,
+                        time3: forcastData.time3
                     });
                 } 
             });
