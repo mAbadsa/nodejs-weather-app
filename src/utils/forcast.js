@@ -13,11 +13,13 @@ const forcast = (latitude, longitude, callback) => {
                     summary: body.daily.data[0].summary,
                     temperature: body.currently["temperature"],
                     precipProbability: body.currently["precipProbability"],
-                    maxTemp: body.daily.data[0].temperatureHigh,
-                    minTemp: body.daily.data[0].temperatureLow,
+                    maxTemp: body.daily.data[0].temperatureMax,
+                    minTemp: body.daily.data[0].temperatureMin,
                     timeNow: body.daily.data[0].time,
                     time2: body.daily.data[1].time,
                     time3: body.daily.data[2].time,
+                    latitude: body.latitude,
+                    longitude: body.longitude,
                 });
         }
     });

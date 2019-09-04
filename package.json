@@ -4,7 +4,8 @@
   "description": "Weather app by fething data from darksky and map api by searching on address",
   "main": "index.js",
   "scripts": {
-    "start": "node src/app.js"
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js -e js,hbs"
   },
   "author": "Muhammad Elabadsa",
   "license": "ISC",
@@ -15,6 +16,7 @@
     "request": "^2.88.0"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.9.0"
+    "@fortawesome/fontawesome-free": "^5.9.0",
+    "nodemon": "^1.19.1"
   }
 }
