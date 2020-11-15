@@ -15,6 +15,7 @@
 
 <body>
   {{>header}}
+  {{ error }}
   <section class="main">
     <div class="container">
       <div class="row">
@@ -31,33 +32,40 @@
                 <button>submit</button>
               </form>
               <div class="position-absolute search-result-container" id="search_result">
-                
+
               </div>
+            </div>
+          </div>
+          <div class="row mx-0">
+            <div class="col-12 alert alert-danger temp-error" role="alert">
             </div>
           </div>
           <div class="row justify-content-between rounded pt-4 px-4 my-3 mx-0 weather-desc text-secondary  current-day">
             <div class="row pb-0">
               <div class="col-12 pr-0">
-                <span class="city pr-2" id="city__name">_</span>
-                <span class="country" id="country__name">_</span>
+                <span class="city pr-2" id="city__name"></span>
+                <span class="country" id="country__name"></span>
               </div>
               <div class="col-12 weather-summary">
-                <p class="date--day d-inline" id="day_name">_</p>
-                <p class="d-inline" id="time_clock">_ <span id="time_PM_AM">_</span></p>
-                <p class="summary">_</p>
+                <p class="date--day d-inline-block" id="day_name"></p>
+                <p class="d-inline" id="time_clock"> <span id="time_PM_AM"></span></p>
+                <p class="summary"></p>
               </div>
             </div>
-            <div class="row mx-0">
-              <div class="col-6">
-                <div class="row align-items-center">
-                  <img class="px-2" src="img/icons/rainbow.png" id="weather_icon_img" alt="rainbow">
-                  <p class="temp pl-2">_</p><sup class="mb-3 lead text-dark">&deg;C</sup>
-                </div>
+            <div class="row mx-0" style="height: 80px;">
+              <div class="col-6 row align-items-center temp--box">
+                {{!-- <div class=""> --}}
+                <img class="px-2" src="/img/loadingimg/default-placeholder.png" id="weather_icon_img"
+                  alt="default-placeholder">
+                
+                  <p class="temp pl-2"></p><sup class="mb-3 lead text-dark"></sup>
+                
+                {{!-- </div> --}}
               </div>
               <div class="col-6">
-                <div class="">Precipitation: <span id="precip_probability"></span></div>
-                <div class="">Humidity: <span id="humidity"></span></div>
-                <div class="">Wind: <span id="wind_speed"></span></div>
+                <div class="mb-1"> <span id="precip_probability"></span></div>
+                <div class="mb-1"> <span id="humidity"></span></div>
+                <div class="mb-1"> <span id="wind_speed"></span></div>
               </div>
             </div>
             <div class="row py-3 sub-weather-desc-box justify-content-between" id="daily_temp_container">

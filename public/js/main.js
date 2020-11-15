@@ -14,6 +14,22 @@ const humidity = document.getElementById("humidity");
 const weatherIconImg = document.getElementById("weather_icon_img");
 const windSpeed = document.getElementById("wind_speed");
 const searchResult = document.getElementById("search_result");
+const alertWarningData = document.querySelector(".alert-danger");
+const supSiSympole = document.querySelector("sup.lead");
+
+supSiSympole.textContent = "";
+summary.classList.add("loading");
+cityName.classList.add("loading");
+precipProbability.parentElement.classList.add("loading");
+humidity.parentElement.classList.add("loading");
+windSpeed.parentElement.classList.add("loading");
+timeClock.classList.add("loading");
+dayNameElmt.classList.add("loading");
+temp.classList.add("loadingCol");
+
+alertWarningData.classList.add("temp-error");
+
+console.log(document.querySelectorAll("div[class*=load]"));
 
 let placeName;
 var days = [
@@ -76,16 +92,36 @@ function fetchWeather(placeName) {
   fetch(`/weather?address=${placeName}`).then((res) => {
     res.json().then((data) => {
       if (data.error) {
-        temp.classList.add("temp-error");
-        temp.textContent = data.error;
+        alertWarningData.classList.remove("temp-error");
+        alertWarningData.classList.add("block");
+        alertWarningData.textContent = data.error;
       } else {
+        alertWarningData.classList.add("temp-error");
+        alertWarningData.classList.remove("block");
+        summary.classList.remove("loading");
+        cityName.classList.remove("loading");
+        temp.classList.remove("loadingCol");
+
+        precipProbability.parentElement.childNodes[0].textContent =
+          "Precipitation: ";
+        humidity.parentElement.childNodes[0].textContent = "Humidity: ";
+        windSpeed.parentElement.childNodes[0].textContent = "Wind: ";
+
+        precipProbability.parentElement.classList.remove("loading");
+        humidity.parentElement.classList.remove("loading");
+        windSpeed.parentElement.classList.remove("loading");
+        timeClock.classList.remove("loading");
+        dayNameElmt.classList.remove("loading");
+
         temp.textContent = Math.round(data.temperature);
+        supSiSympole.textContent = "°C";
         summary.textContent = data.summary;
         // maxTemp.textContent = Math.round(data.maxTemp);
         // minTemp.textContent = Math.round(data.minTemp);
         countryName.textContent = data.countryName;
         cityName.textContent = data.placeName;
-        precipProbability.textContent = data.precipProbability * 100 + "%";
+        precipProbability.textContent =
+          Math.round(data.precipProbability * 100) + "%";
         humidity.textContent = Math.round(data.humidity * 100) + "%";
 
         weatherIconImg.setAttribute("src", `img/weathericons/${data.icon}.png`);
